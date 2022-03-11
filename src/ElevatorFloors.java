@@ -13,20 +13,58 @@ public class ElevatorFloors {
         Scanner kb = new Scanner(System.in);
 
         System.out.println("Please enter the floor number (1-20): ");
+
         int floorNumber = kb.nextInt();
+
+        if(floorNumber<0){
+            System.out.println("You entered a negative floor value");
+            recall();
+        }
+        if(floorNumber==13){
+            System.out.println("You entered 13 as the floor value, which is invalid.");
+            recall();
+        }
+        if(floorNumber>20){
+            System.out.println("You entered a floor value greater than 20, which is invalid.");
+            recall();
+        }
 
         System.out.println("What is the password? ");
         String password = kb.next();
 
-
-        if(floorNumber >0 && floorNumber <21 && floorNumber != 13 && password.equals("password123")){
+        if(password.equalsIgnoreCase("password123")){
                 System.out.println("Traveling");
-
-        }
-        else {
-            System.out.println("Invalid floor");
+                return;
         }
 
+        else{
+            System.out.println("Incorrect password");
+            recall();
+        }
+
+
+    }
+
+    private static void recall() {
+        //scanner class for this method
+        Scanner in = new Scanner(System.in);
+
+        //asking for the floor number
+        System.out.println("Please enter the floor number (1-20): ");
+        int floorNumber = in.nextInt();
+
+        if(floorNumber<0){
+            System.out.println("You entered a negative floor value");
+            recall();
+        }
+        if(floorNumber==13){
+            System.out.println("You entered 13 as the floor value, which is invalid.");
+            recall();
+        }
+        if(floorNumber>20){
+            System.out.println("You entered a floor value greater than 20, which is invalid.");
+            recall();
+        }
 
     }
 }
